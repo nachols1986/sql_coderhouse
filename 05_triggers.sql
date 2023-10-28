@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS user_log
                           FOREIGN KEY (product_id) REFERENCES product(id)
              );
 
--- Trigger user_before_insert (BEFORE INSERT) en la tabla user:
 -- Este trigger registrará las inserciones de nuevos usuarios en la tabla user_log.DELIMITER //
 CREATE TRIGGER user_before_insert
   BEFORE
@@ -44,7 +43,6 @@ CREATE TRIGGER user_before_insert
               );END;//
 delimiter ;
 
--- Trigger user_after_update (AFTER UPDATE) en la tabla user:
 -- Este trigger registrará las actualizaciones de usuarios en la tabla user_log.DELIMITER //
 CREATE TRIGGER user_after_update
   after
@@ -67,6 +65,7 @@ CREATE TRIGGER user_after_update
                                       concat('Usuario actualizado: ', new.username)
               );END;//
 delimiter ;
+
 -- Este trigger registrará las actualizaciones de productos en la tabla product_log como se había planeado inicialmente.DELIMITER //
 CREATE TRIGGER product_after_update
   after
